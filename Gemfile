@@ -2,6 +2,12 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.0.1'
 
+# Authentication library
+gem "devise", '1.1.3'
+
+# Encryptor for hashing passwords
+gem 'bcrypt-ruby'
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
