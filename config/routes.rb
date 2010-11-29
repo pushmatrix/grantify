@@ -1,5 +1,12 @@
 Grantify::Application.routes.draw do
+
   devise_for :users
+  
+  resources :users do
+    resources :grants do
+      resources :comments
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

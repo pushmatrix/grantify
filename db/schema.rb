@@ -10,7 +10,32 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101123044042) do
+ActiveRecord::Schema.define(:version => 20101129214602) do
+
+  create_table "comments", :force => true do |t|
+    t.text     "message"
+    t.integer  "grant_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "grants", :force => true do |t|
+    t.string   "conference_name"
+    t.boolean  "prev_apply"
+    t.date     "conference_date"
+    t.integer  "region"
+    t.integer  "user_id"
+    t.integer  "status"
+    t.float    "registration_cost"
+    t.float    "transportation_cost"
+    t.float    "accommodation_cost"
+    t.float    "meal_cost"
+    t.float    "department_assis"
+    t.float    "faculty_assis"
+    t.float    "other_assis"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                               :default => "",    :null => false
@@ -27,6 +52,12 @@ ActiveRecord::Schema.define(:version => 20101123044042) do
     t.boolean  "admin",                               :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
+    t.string   "phone"
+    t.string   "department"
+    t.integer  "student_number"
+    t.integer  "degree"
+    t.date     "year"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
