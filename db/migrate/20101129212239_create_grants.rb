@@ -11,9 +11,9 @@ class CreateGrants < ActiveRecord::Migration
       t.float :transportation_cost
       t.float :accommodation_cost
       t.float :meal_cost
-      t.float :department_assist
-      t.float :faculty_assist
-      t.float :other_assist
+      t.float :department_assis
+      t.float :faculty_assis
+      t.float :other_assis
       t.timestamps
     end
   end

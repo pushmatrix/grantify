@@ -1,29 +1,29 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  conference_name: MyString
-  region: 1
-  prev_apply: false
-  conference_date: 2010-11-29
-  registration_cost: 
-  transportation_cost: 
-  accommodation_cost: 
-  meal_cost: 
-  department_assis: 
-  faculty_assis: 
-  other_assis: 
-  user_id: 1
+ conference_name: Conference 1
+ region: 2
+ prev_apply: false
+ conference_date: 2010-11-29
+ registration_cost: 100.00
+ transportation_cost: 10.00
+ accommodation_cost: 200.00
+ meal_cost: 50.00
+ department_assis: 50.00 
+ faculty_assis: 50.00
+ other_assis: 50.00
+ user_id: 1
 
 two:
-  conference_name: MyString
-  region: 1
-  prev_apply: false
-  conference_date: 2010-11-29
-  registration_cost: 
-  transportation_cost: 
-  accommodation_cost: 
-  meal_cost: 
-  department_assis: 
-  faculty_assis: 
-  other_assis: 
-  user_id: 1
+ conference_name: Conference 1
+ region: 2
+ prev_apply: false
+ conference_date: 2010-11-29
+ registration_cost: 100.00
+ transportation_cost: 10.00
+ accommodation_cost: 200.00
+ meal_cost: 50.00
+ department_assis: 50.00 
+ faculty_assis: 50.00
+ other_assis: 50.00
+ user_id: 1
