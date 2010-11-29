@@ -11,13 +11,14 @@
 	<div class='content'>
 		<div id='logo'>Grantify</div>
 		<%-if !user_signed_in?%>
-			<a href=""><div class='tab selected'>View Applications</div></a>
-			<a href=""><div class='tab'>Create Application</div></a>
+	  		<%=section_link('View Applications',:controller => 'devise/sessions', :action => 'new')%>
+			<%=section_link('Create an Application',:controller => 'devise/sessions', :action => 'new')%>
 			<%=link_to "<div class='resource'>Logout</div>".html_safe,destroy_user_session_path%>
 			<%=link_to "<div class='resource'>Settings</div>".html_safe,destroy_user_session_path%>
 		<%end-%>
 	</div>
 </div>
+
 
 <div id='banner'>
 	<div class='content'>
@@ -32,6 +33,9 @@
 
 <div id='main_container'>
 	<div class='content'>
+		<div class='info'>
+			HEY HEY
+		</div>
 		<%= yield %>
 	</div>
 </div>
