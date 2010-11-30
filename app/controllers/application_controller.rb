@@ -14,9 +14,9 @@ class ApplicationController < ActionController::Base
   def ensure_user_info
     if !current_user.nil? and current_user.name.nil? and !is_admin?
       if params[:action] != "edit" and params[:controller] != "users" and params[:controller] !='devise/sessions'
-        flash[:notice] = 'Please fill in all the following information.'
         redirect_to edit_user_path(current_user)
       end
     end
   end
+
 end

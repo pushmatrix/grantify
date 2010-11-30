@@ -15,6 +15,8 @@ class GrantsController < ApplicationController
 
   def create
     @grant = Grant.create(params[:grant])
+    @grant.prev_apply = params[:prev_apply]
+    @grant.region = params[:region]
     @grant.user_id = current_user.id
     flash[:notice] = 'Your grant application has been submitted.'
     @grant.save
