@@ -2,11 +2,9 @@ Grantify::Application.routes.draw do
 
   devise_for :users
   
-  resources :users do
-    resources :grants do
-      resources :comments
-    end
-  end
+  resources :users
+  resources :grants
+  resources :comments
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -57,7 +55,7 @@ Grantify::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => "welcome#index"
+  root :to => "grants#index"
 
   # See how all your routes lay out with "rake routes"
 

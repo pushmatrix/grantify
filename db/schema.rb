@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101129214602) do
+ActiveRecord::Schema.define(:version => 20101130004035) do
 
   create_table "comments", :force => true do |t|
     t.text     "message"
@@ -22,7 +22,6 @@ ActiveRecord::Schema.define(:version => 20101129214602) do
   create_table "grants", :force => true do |t|
     t.string   "conference_name"
     t.boolean  "prev_apply"
-    t.date     "conference_date"
     t.integer  "region"
     t.integer  "user_id"
     t.integer  "status"
@@ -35,6 +34,7 @@ ActiveRecord::Schema.define(:version => 20101129214602) do
     t.float    "other_assis"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "conference_date"
   end
 
   create_table "users", :force => true do |t|

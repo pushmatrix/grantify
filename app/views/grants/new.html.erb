@@ -1,2 +1,16 @@
 <h1>Grants#new</h1>
 <p>Find me in app/views/grants/new.html.erb</p>
+<% form_for @grant do |f| %>
+	<%= f.label :conference_name %>: <%= f.text_field :conference_name %><br />
+	<%= f.label :region %>: <%= select_tag :region, options_for_select('A' => '0','B' => 1,'C' => 2,'D' => 3,'E' => 4,'Other' => 5) %><br />
+	<%= f.label :prev_apply %>: <%= select_tag :region, options_for_select('No' => false,'Yes' => true) %><br />
+	<%= f.label :conference_date %>: <%= f.text_field :conference_date %><br />
+	<%= f.label :registration_cost %>: <%= f.text_field :registration_cost %><br />
+	<%= f.label :transportation_cost %>: <%= f.text_field :transportation_cost %><br />
+	<%= f.label :accommodation_cost %>: <%= f.text_field :accommodation_cost %><br />
+	<%= f.label :meal_cost %>: <%= f.text_field :meal_cost %><br />
+	<%= f.label :department_assis, 'Department assistance' %>: <%= f.text_field :department_assis %><br />
+	<%= f.label :faculty_assis, 'Faculty assistance' %>: <%= f.text_field :faculty_assis %><br />
+	<%= f.label :other_assis, 'Other assistance' %>: <%= f.text_field :other_assis %><br />
+	<%= f.submit 'Submit' %>
+<% end %>
