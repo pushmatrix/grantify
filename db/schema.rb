@@ -38,7 +38,6 @@ ActiveRecord::Schema.define(:version => 20101130042521) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                               :default => "",    :null => false
     t.string   "encrypted_password",   :limit => 128, :default => "",    :null => false
     t.string   "password_salt",                       :default => "",    :null => false
     t.string   "reset_password_token"
@@ -50,17 +49,18 @@ ActiveRecord::Schema.define(:version => 20101130042521) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.boolean  "admin",                               :default => false
+    t.string   "student_number"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
     t.string   "phone"
+    t.string   "email"
     t.string   "department"
-    t.integer  "student_number"
     t.integer  "degree"
     t.integer  "year"
   end
 
-  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "users", ["student_number"], :name => "index_users_on_student_number", :unique => true
 
 end

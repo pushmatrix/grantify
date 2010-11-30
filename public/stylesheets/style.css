@@ -157,6 +157,19 @@ form submit{
 }
 
 
+.error{
+  color: #F00;
+  padding: 15px;
+}
+
+.field_with_errors label{
+  color:red;
+}
+
+.field_with_errors input{
+  border: 1px solid red;
+}
+
 .add{
   float:left;
   background-position: fixed;

@@ -13,7 +13,7 @@
 	<div class='content'>
 		<div id='logo'>Grantify</div>
 		<%-if user_signed_in?%>
-			<%-if !is_admin?%>
+			<%-if is_admin?%>
 				<%=section_link('All Applications',:controller => 'grants', :action => 'index')%>
 				<%=section_link('Find Application',:controller => 'grants', :action => 'new')%>
 				<%=section_link('Distribute Funds',:controller => 'grants', :action => 'new')%>
