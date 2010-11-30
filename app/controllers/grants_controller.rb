@@ -17,8 +17,8 @@ class GrantsController < ApplicationController
   end
 
   def show
-    @comments = @grant.comments
     @comment = Comment.new
+    @comments = @grant.comments.all
   end
 
   def edit

@@ -1,6 +1,9 @@
 <h1>Grants#show</h1>
 <p>Find me in app/views/grants/show.html.erb</p>
 <%= link_to @grant.conference_name, edit_grant_path(@grant) %>
-<% form_for @comment do |f| %>
-	<%= f.label :comment %><%= f.textarea :comment%>
+<br /><br />
+<% form_for [@grant, @comment] do |f| %>
+	<%= f.label :message, 'Comment' %><br /><%= f.text_area :message %><br />
+	<%= f.submit 'Submit' %>
 <% end %>
+<%= @comments.last.message %>

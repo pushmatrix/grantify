@@ -6,6 +6,11 @@ class CommentsController < ApplicationController
   end
 
   def create
+    @comment = Comment.create(params[:comment])
+    @comment.grant_id = params[:grant_id]
+    flash[:notice] = 'Comment posted.'
+    @comment.save
+    redirect_to grant_path(params[:grant_id])
   end
 
   def show

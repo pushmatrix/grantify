@@ -32,7 +32,8 @@
 
 <div id='main_container'>
 	<div class='content'>
-		<%= debug params%>
+		<%= debug params%>--------------------------------<br />
+		<%= flash[:notice] %>
 		<%= yield %>
 	</div>
 </div>

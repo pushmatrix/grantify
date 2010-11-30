@@ -3,7 +3,9 @@ Grantify::Application.routes.draw do
   devise_for :users
   
   resources :users
-  resources :grants
+  resources :grants do
+    resources :comments, :only => :create
+  end
   resources :comments
 
   # The priority is based upon order of creation:
