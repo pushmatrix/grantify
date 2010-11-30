@@ -1,0 +1,11 @@
+<h1>Users#edit</h1>
+<p>Find me in app/views/users/edit.html.erb</p>
+<% form_for current_user do |f| %>
+	<%= f.label :name %>: <%= f.text_field :name %><br />
+	<%= f.label :phone %>: <%= f.text_field :phone %><br />
+	<%= f.label :department %>: <%= f.text_field :department %><br />
+	<%= f.label :student_number %>: <%= f.text_field :student_number %><br />
+	<%= f.label :degree %>: <%= f.text_field :degree %><br />
+	<%= f.label :year %>: <%= f.text_field :year %><br />
+	<%= f.submit 'Save' %>
+<% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101130004035) do
+ActiveRecord::Schema.define(:version => 20101130042521) do
 
   create_table "comments", :force => true do |t|
     t.text     "message"
@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(:version => 20101130004035) do
     t.string   "department"
     t.integer  "student_number"
     t.integer  "degree"
-    t.date     "year"
+    t.integer  "year"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
