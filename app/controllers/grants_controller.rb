@@ -1,5 +1,6 @@
 class GrantsController < ApplicationController
   before_filter :fetch_grant, :only => [:show, :edit, :update]
+  before_filter :authenticate_user!
   def index
     if !is_admin?
       @grants = current_user.grants.all
@@ -21,8 +22,8 @@ class GrantsController < ApplicationController
   end
 
   def show
-    @comments = @grant.comments
     @comment = Comment.new
+    @comments = @grant.comments.all
   end
 
   def edit

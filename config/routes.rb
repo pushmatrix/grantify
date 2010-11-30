@@ -1,9 +1,13 @@
 Grantify::Application.routes.draw do
 
+  get "users/edit"
+
   devise_for :users
   
   resources :users
-  resources :grants
+  resources :grants do
+    resources :comments, :only => :create
+  end
   resources :comments
 
 

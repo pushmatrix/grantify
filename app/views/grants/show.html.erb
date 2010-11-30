@@ -1,8 +1,11 @@
 <%=content_for :header, @grant.conference_name%>
 <%= link_to 'Edit this application', edit_grant_path(@grant) %>
-<% form_for @comment do |f| %>
-	<%= f.label :comment %><%= f.text_area :message%>
+
+<% form_for [@grant, @comment] do |f| %>
+	<%= f.label :message, 'Comment' %><br /><%= f.text_area :message %><br />
+	<%= f.submit 'Submit' %>
 <% end %>
+<%= @comments.last.message unless @comments.empty? %>
 
 <div class='details' style="width:700px">
 		<h2>Conference Details</h2>
@@ -29,3 +32,4 @@
 			<div style="clear:both"></div><br/>
 	<br/>
 </div>
+
