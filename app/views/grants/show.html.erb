@@ -1,7 +1,31 @@
 <%=content_for :header, @grant.conference_name%>
-<h1>Grants#show</h1>
-<p>Find me in app/views/grants/show.html.erb</p>
-<%= link_to @grant.conference_name, edit_grant_path(@grant) %>
+<%= link_to 'Edit this application', edit_grant_path(@grant) %>
 <% form_for @comment do |f| %>
-	<%= f.label :comment %><%= f.textarea :comment%>
+	<%= f.label :comment %><%= f.text_area :message%>
 <% end %>
+
+<div class='details' style="width:700px">
+		<h2>Conference Details</h2>
+			<label>Conference name:</label><%=@grant.conference_name%>
+			<div style="clear:both"></div><br/>
+			<label>Region of the conference:</label><%=@grant.region%>
+			<div style="clear:both"></div><br/>
+			<label>Previously applied?:</label><%=@grant.prev_apply%>
+			<div style="clear:both"></div><br/>
+			<label>Registration Cost:</label><%=@grant.registration_cost%>
+			<div style="clear:both"></div><br/>
+			<label>Transportation Cost:</label><%=@grant.transportation_cost%>
+			<div style="clear:both"></div><br/>
+			<label>Accommodation Cost:</label><%=@grant.accommodation_cost%>
+			<div style="clear:both"></div><br/>
+			<label>Meal Cost</label><%=@grant.meal_cost%>
+			<div style="clear:both"></div><br/>
+		<h2>External Financial Assistance</h2>
+			<label>Department assistance:</label><%=@grant.department_assis%>
+			<div style="clear:both"></div><br/>
+			<label>Faculty assistance:</label><%=@grant.faculty_assis%>
+			<div style="clear:both"></div><br/>
+			<label>Other assistance:</label><%=@grant.other_assis%>
+			<div style="clear:both"></div><br/>
+	<br/>
+</div>

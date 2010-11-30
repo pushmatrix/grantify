@@ -7,4 +7,5 @@ module ApplicationHelper
         link_to "<div class='tab'>#{name}</div>".html_safe, options
       end
   end
+  
 end

@@ -21,7 +21,7 @@
 			Status
 		</td>
 	</tr>
-	<%-Grant.all.each_with_index do |grant,i| %>
+	<%-@grants.each_with_index do |grant,i| %>
 		<tr class='<%="application #{i%2==0 ? 'even':'odd'}"%>' grantId = <%=grant.id%>>
 			<td><%=grant.conference_name%> &nbsp;<%=link_to "<small style='color:#2477b7;font-style:italic'>view</small>".html_safe, grant_path(grant)%></td>
 			<td><%=grant.created_at.to_date.to_s(:long)%></td>

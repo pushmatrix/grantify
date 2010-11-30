@@ -67,7 +67,7 @@ a:hover{
   font-weight: 30px;
   height: 50px;
   padding-top: 8px;
-  padding-right: 200px;
+  padding-right: 50px;
 
 }
 #banner{
@@ -75,7 +75,7 @@ a:hover{
   width: 100%;
   background: #1779C6;
   border-top: 1px solid #5c97c4;
-  border-bottom: 1px solid #09497a;
+  border-bottom: 1px solid #efefef;
   padding-top: 20px;
 }
 
@@ -109,6 +109,7 @@ a:hover{
   margin: 0px auto;
   margin-top: -30px;
   padding-top: 20px;
+  padding-bottom: 20px;
   -webkit-box-shadow: rgba(0, 0, 0, 0.292969) 0px 0px 3px;
 }
 
@@ -127,12 +128,12 @@ a:hover{
 }
 
 
-form label{
-  font-size: 25px;
+form input{
+  margin-bottom: 30px;
 }
 form input[type=text],form input[type=password]{
   font-size: 25px;
-  width:400px;
+  width:300px;
   height:30px;
 }
 
@@ -191,4 +192,44 @@ td{
 
 tr.application:hover{
   background:#97d2fc;
+}
+
+.new label{
+  width: 200px;
+  float:left;
+  text-align: left;
+  display: block;
+  font-size: 15px;
+}
+.details label{
+  width: 200px;
+  float:left;
+  text-align: left;
+  display: block;
+  font-size: 15px;
+}
+.new form input{
+  height:18px;
+  font-size: 18px;
+}
+
+select{
+  width: 300px;
+  margin-bottom: 30px;
+}
+
+small{
+  font-style:italic;
+}
+
+.minimap{
+  cursor:pointer;
+  float:left;
+  width:241px;
+  margin-left:50px;
+  margin-top:65px;
+  border:1px solid black;
+}
+.minimap:hover{
+  opacity:0.7;
 }

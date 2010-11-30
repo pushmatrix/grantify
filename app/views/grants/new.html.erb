@@ -1,19 +1,37 @@
-
 <%=content_for :header, "Create an Application"%>
+<%= content_for :javascript, javascript_include_tag("facebox.js")%>
+<script language="javascript" type="text/javascript">  
+jQuery(document).ready(function($) {
+	$('a[rel*=facebox]').facebox();
+});
+</script>
+<div class="new" style='float:left;width:550px;'>
+	<% form_for @grant do |f| %>
+		<h2>Step 1: Provide Conference Details</h2>
+		<div style="clear:both"></div>
+		<%= f.label :conference_name %> <%= f.text_field :conference_name %><br />
+		<%= f.label 'Region of the conference' %> <%= select_tag :region, options_for_select('A' => '0','B' => 1,'C' => 2,'D' => 3,'E' => 4,'Other' => 5) %>
+		<div style="clear:both"></div>
+		<%= f.label 'Have you previously applied?' %> <%= select_tag :prev_apply, options_for_select('No' => false,'Yes' => true) %><br />
+		<div style="clear:both"></div>
+		<%= f.label :conference_date %> <%= f.text_field :conference_date %><br />
+		<%= f.label :registration_cost %> <%= f.text_field :registration_cost %><br />
+		<%= f.label :transportation_cost %> <%= f.text_field :transportation_cost %><br />
+		<%= f.label :accommodation_cost %> <%= f.text_field :accommodation_cost %><br />
+		<%= f.label :meal_cost %> <%= f.text_field :meal_cost %>
+		<h2>Step 2: List Any Financial Assistance</h2>
+		<small>If you will not receive any external financial assistance, leave these blank.</small><br/><br/>
+		<%= f.label :department_assis, 'Department assistance' %> <%= f.text_field :department_assis %><br />
+		<%= f.label :faculty_assis, 'Faculty assistance' %> <%= f.text_field :faculty_assis %><br />
+		<%= f.label :other_assis, 'Other assistance' %> <%= f.text_field :other_assis %><br />
+		<h2>Step 3: Save Your Application</h2>
+		<small>After saving, you will need to confirm your grant application before submitting it. This will be done on the following page. Don't worry, you will be able to edit these details again before submitting.</small>
+		<br />
+		<br />
+		<%= f.submit 'Save Application' %>
+	<% end %>
+	<br/>
+</div>
 
-<h1>Grants#new</h1>
-<p>Find me in app/views/grants/new.html.erb</p>
-<% form_for @grant do |f| %>
-	<%= f.label :conference_name %>: <%= f.text_field :conference_name %><br />
-	<%= f.label :region %>: <%= select_tag :region, options_for_select('A' => '0','B' => 1,'C' => 2,'D' => 3,'E' => 4,'Other' => 5) %><br />
-	<%= f.label :prev_apply %>: <%= select_tag :region, options_for_select('No' => false,'Yes' => true) %><br />
-	<%= f.label :conference_date %>: <%= f.text_field :conference_date %><br />
-	<%= f.label :registration_cost %>: <%= f.text_field :registration_cost %><br />
-	<%= f.label :transportation_cost %>: <%= f.text_field :transportation_cost %><br />
-	<%= f.label :accommodation_cost %>: <%= f.text_field :accommodation_cost %><br />
-	<%= f.label :meal_cost %>: <%= f.text_field :meal_cost %><br />
-	<%= f.label :department_assis, 'Department assistance' %>: <%= f.text_field :department_assis %><br />
-	<%= f.label :faculty_assis, 'Faculty assistance' %>: <%= f.text_field :faculty_assis %><br />
-	<%= f.label :other_assis, 'Other assistance' %>: <%= f.text_field :other_assis %><br />
-	<%= f.submit 'Submit' %>
-<% end %>
+<div class='minimap'><a href="/images/map.jpg" rel='facebox'><%=image_tag('minimap.jpg')%></a></div>
+<div style="clear:both"></div>

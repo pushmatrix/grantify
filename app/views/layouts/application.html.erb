@@ -4,6 +4,8 @@
   <title>Grantify</title>
   <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag "jquery.min.js"%>
+  <%= yield :javascript %>
+   
   <%= csrf_meta_tag %>
 </head>
 <body>
@@ -11,8 +13,15 @@
 	<div class='content'>
 		<div id='logo'>Grantify</div>
 		<%-if user_signed_in?%>
-	  		<%=section_link('View Applications',:controller => 'grants', :action => 'index')%>
-			<%=section_link('Create an Application',:controller => 'grants', :action => 'new')%>
+			<%-if !is_admin?%>
+				<%=section_link('All Applications',:controller => 'grants', :action => 'index')%>
+				<%=section_link('Find Application',:controller => 'grants', :action => 'new')%>
+				<%=section_link('Distribute Funds',:controller => 'grants', :action => 'new')%>
+				<%=section_link('Reports',:controller => 'grants', :action => 'new')%>
+			<%else%>
+	  			<%=section_link('Your Applications',:controller => 'grants', :action => 'index')%>
+				<%=section_link('Create an Application',:controller => 'grants', :action => 'new')%>
+			<%end-%>
 			<%=link_to "<div class='resource'>Logout</div>".html_safe,destroy_user_session_path%>
 			<%=link_to "<div class='resource'>Settings</div>".html_safe,edit_user_path(current_user)%>
 		<%else%>
@@ -45,8 +54,8 @@
 					<%= flash[:notice] %>
 				</div>
 			<% end-%>
-		<%= debug params%>
 		<%= yield %>
+		<%= debug params%>
 	</div>
 </div>
 

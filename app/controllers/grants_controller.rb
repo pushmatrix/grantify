@@ -1,7 +1,11 @@
 class GrantsController < ApplicationController
   before_filter :fetch_grant, :only => [:show, :edit, :update]
   def index
-    @grants = Grant.all
+    if !is_admin?
+      @grants = current_user.grants.all
+    else
+      @grants = Grant.all
+    end
   end
 
   def new
@@ -11,7 +15,7 @@ class GrantsController < ApplicationController
   def create
     @grant = Grant.create(params[:grant])
     @grant.user_id = current_user.id
-    flash[:notice] = 'Your grant has been created.'
+    flash[:notice] = 'Your grant application has been submitted.'
     @grant.save
     redirect_to grants_path
   end
