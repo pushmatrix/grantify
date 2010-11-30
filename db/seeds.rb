@@ -5,4 +5,10 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
-users = User.create([{:email=>"test@uottawa.ca",:password=>"123456"},{:email=>"admin@uottawa.ca",:password=>"admin",:admin=>:true}])
+
+testUser1 = User.create({:email=>"test@uottawa.ca",:password=>"123456"})
+
+Grant.create(:user=>testUser1,:conference_name=>"Rails Conf 2011",:status=>1)
+Grant.create(:user=>testUser1,:conference_name=>"CUSEC 2011",:status=>1)
+
+testAdmini = User.create({:email=>"admin@uottawa.ca",:password=>"admin",:admin=>:true})

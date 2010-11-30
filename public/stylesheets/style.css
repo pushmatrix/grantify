@@ -11,6 +11,13 @@ body{
   background-image:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#424242), to(#000000));
 }
 
+a{
+  color:#1779c6;
+}
+a:hover{
+  color:#62a1d1;
+}
+
 #navbar a{
   color:white;
   text-decoration:none;
@@ -54,10 +61,12 @@ body{
 
 #logo{
   display: inline-block;
-  font-size: 25px;
+  font-size: 24px;
   font-family: myriad-pro-1, myriad-pro-2, sans-serif;
   font-style: italic;
   font-weight: 30px;
+  height: 50px;
+  padding-top: 8px;
   padding-right: 200px;
 
 }
@@ -66,6 +75,7 @@ body{
   width: 100%;
   background: #1779C6;
   border-top: 1px solid #5c97c4;
+  border-bottom: 1px solid #09497a;
   padding-top: 20px;
 }
 
@@ -88,9 +98,9 @@ body{
 }
 
 .content{
-  width: 925px;
+  width: 900px;
   margin: 0px auto;
-  padding-left: 30px;
+  padding: 0px 30px 0px 30px;
 }
 #main_container{
   background: white;
@@ -103,18 +113,19 @@ body{
 }
 
 #footer{
-  margin: 0px auto;
-  width: 240px;
   font-size:12px;
   color:#acafa5;
+  padding: 6px;
 }
 
 #footer a{
   color:#acafa5;
 }
+
 #footer a:visited{
   color:#acafa5;
 }
+
 
 form label{
   font-size: 25px;
@@ -129,3 +140,55 @@ form submit{
   width:100px;
 }
 
+
+.notice{
+  color: #ffc805;
+  background:#fdffe2;
+  border: 1px solid #fcef9f;
+  padding: 15px;
+}
+
+.alert{
+  color: #F00;
+  background:#ffc9c9;
+  border: 1px solid #F00;
+  padding: 15px;
+}
+
+
+.add{
+  float:left;
+  background-position: fixed;
+  background-repeat: no-repeat;
+  background-image: url('../images/add.png');
+  padding-left:30px;
+  padding-top:2px;
+  height: 22px;
+}
+
+
+table{
+  color: #545454;
+  text-shadow: white 1px 1px 0.5px;
+}
+tr.application{
+  cursor:pointer;
+  height: 50px;
+}
+
+
+td{
+  padding-left: 10px;
+}
+
+
+.odd {
+  background: #e5f3ff;
+}
+.even{
+  background: #b7e0ff;
+}
+
+tr.application:hover{
+  background:#97d2fc;
+}
