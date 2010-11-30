@@ -1,2 +1,31 @@
-<h1>Grants#index</h1>
-<p>Find me in app/views/grants/index.html.erb</p>
+<%=content_for :header, "Your Applications"%>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('tr').click(function(el) {
+			window.location = "/grants/" + $(this).attr("grantId");
+		});
+	});
+</script>
+<%=link_to("<div class='add'>Create an application</div>".html_safe, new_grant_path)%>
+<div style="clear:both"></div>
+<br/>
+<table style="width:900px">
+	<tr>
+		<td style="padding-right:100px">
+			Conference Name
+		</td>
+		<td style="padding-right:0px">
+			Created on
+		</td>
+		<td>
+			Status
+		</td>
+	</tr>
+	<%-Grant.all.each_with_index do |grant,i| %>
+		<tr class='<%="application #{i%2==0 ? 'even':'odd'}"%>' grantId = <%=grant.id%>>
+			<td><%=grant.conference_name%> &nbsp;<%=link_to "<small style='color:#2477b7;font-style:italic'>view</small>".html_safe, grant_path(grant)%></td>
+			<td><%=grant.created_at.to_date.to_s(:long)%></td>
+			<td><%=grant.status%></td>
+		</tr>
+	<%end-%>
+</table>
