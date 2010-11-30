@@ -5,19 +5,43 @@ jQuery(document).ready(function($) {
 	$('a[rel*=facebox]').facebox();
 });
 </script>
-<%= link_to 'Edit this application', edit_grant_path(@grant) %>
-<%if is_admin?%>
-	&nbsp;<%= link_to "Accept", {:action => :accept} %>
-	&nbsp;<%= link_to "Reject" %>
+
+<%if @grant.status == Grant::STATUS[:REJECTED]%>
+	<div class='alert'> This grant application has been rejected</div>
+<%end%>
+<%if @grant.status == Grant::STATUS['IN PROCESS']%>
+	<div class='notice'> This grant application is pending approval.</div>
+<%end%>
+<%if @grant.status == Grant::STATUS[:TEMPORARY]%>
+	<div class='notice'> This grant application has been approved, and is now waiting for fund distribution.</div>
+<%end%>
+<%if @grant.status == Grant::STATUS[:EDITING]%>
+
+<%if !@grant.valid?%>
+	<div class='notice'>Before you can submit this application, you will need to edit and fill in all of the forms.</div>
+<%end%>
+	<%if @grant.valid?%>
+		<%= button_to 'Submit this application', { :action => "submit", :id => @grant.id },
+		            :confirm => "Are you sure you want to submit?", :method => :post,:style=>'float:left' %>
+	&nbsp;&nbsp;
+	<%end%>
+	<%= link_to 'Edit this application', edit_grant_path(@grant) %>
+<%end-%>
+<%if is_admin? and @grant.status == Grant::STATUS['IN PROCESS']%>
+	&nbsp;<%= link_to "Accept", {:action => :accept, :id => @grant.id}, :method => :post %>
+	&nbsp;<%= link_to "Reject", {:action => :reject, :id => @grant.id}, :method => :post %>
 <%end%>
 <br />
+<div style="clear:both"></div>
 <div class='details' style='float:left;width:550px;'>
 		<h2>Conference Details</h2>
 			<label>Conference name:</label><%=@grant.conference_name%>
 			<div style="clear:both"></div><br/>
-			<label>Region of the conference:</label><%=@grant.region%>
+			<label>Conference date:</label><%=@grant.conference_date%>
 			<div style="clear:both"></div><br/>
-			<label>Previously applied?:</label><%=@grant.prev_apply%>
+			<label>Region of the conference:</label><%=@grant.get_region_name%>
+			<div style="clear:both"></div><br/>
+			<label>Previously applied?:</label><%=@grant.prev_apply ? 'yes':'no'%>
 			<div style="clear:both"></div><br/>
 			<label>Registration Cost:</label><%=@grant.registration_cost%>
 			<div style="clear:both"></div><br/>
@@ -48,4 +72,7 @@ jQuery(document).ready(function($) {
 	<% end-%>
 <%end-%>
 <%= render :partial => 'comments/comment', :collection => @comments, :locals => {:grant=>@grant}%>
+<%-if @comments.empty?%>
+	<small> You have no comments on this application yet.
+<%end-%>
 

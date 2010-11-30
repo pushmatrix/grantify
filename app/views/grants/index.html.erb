@@ -50,7 +50,7 @@
 					<td><%=grant.user.student_number%></td>
 				<%end-%>
 				<td><%=grant.created_at.to_date.to_s(:long)%></td>
-				<td><%=grant.status%></td>
+				<td><%=grant.get_status_name%></td>
 			</tr>
 		<%end-%>
 	</table>

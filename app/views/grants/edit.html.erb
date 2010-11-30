@@ -1,7 +1,18 @@
 <%=content_for :header, 'Edit: ' + @grant.conference_name%>
+<%= content_for :javascript, javascript_include_tag("facebox.js")%>
+<script language="javascript" type="text/javascript">  
+jQuery(document).ready(function($) {
+	$('a[rel*=facebox]').facebox();
+});
+</script>
 <%= link_to 'Back to the application', grant_path(@grant) %>
 <br />
-<div class='new'>
+<%if @grant.errors.present?%>
+<div class='error'>
+	<h2>Ooops, some fields were missing. These must be filled out before submitting.</h2>
+</div>
+<%end-%>
+<div class='new' style='float:left;width:550px;'>
 	<% form_for @grant do |f| %>
 		<h2>Conference Details</h2>
 		<div style="clear:both"></div>
@@ -24,3 +35,5 @@
 		<%= f.submit 'Save Application' %>
 	<% end %>
 </div>
+<div class='minimap'><a href="/images/map.jpg" rel='facebox'><%=image_tag('minimap.jpg')%></a></div>
+<div style="clear:both"></div>

@@ -1,8 +1,6 @@
 Grantify::Application.routes.draw do
 
   get "users/edit"
-  
-  get "grants/accept"
 
   devise_for :users
   
@@ -13,6 +11,11 @@ Grantify::Application.routes.draw do
   resources :users
   resources :grants do
     resources :comments, :only => :create
+    member do
+      post 'submit'
+      get 'accept'
+      get 'reject'
+    end
   end
   resources :comments
   
