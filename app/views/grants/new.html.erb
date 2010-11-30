@@ -10,7 +10,7 @@ jQuery(document).ready(function($) {
 		<h2>Step 1: Provide Conference Details</h2>
 		<div style="clear:both"></div>
 		<%= f.label :conference_name %> <%= f.text_field :conference_name %><br />
-		<%= f.label 'Region of the conference' %> <%= select_tag :region, options_for_select('A' => '0','B' => 1,'C' => 2,'D' => 3,'E' => 4,'Other' => 5) %>
+		<%= f.label 'Region of the conference' %> <%= select_tag :region, options_for_select(Grant::REGION_CODES) %>
 		<div style="clear:both"></div>
 		<%= f.label 'Have you previously applied?' %> <%= select_tag :prev_apply, options_for_select('No' => false,'Yes' => true) %><br />
 		<div style="clear:both"></div>

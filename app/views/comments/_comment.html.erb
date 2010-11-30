@@ -1,8 +1,11 @@
 <div class='comment'>
-	OH SNAP
+	<%=comment.message%>
 	<br />
 	<br />
 	<div>
-		<small>Posted by <%=comment.user.name%> on <%=comment.created_at.to_s(:long)%> &nbsp;&nbsp;&nbsp; <a href="">Edit</a>&nbsp;&nbsp;&nbsp; <a href="">Delete</a></small>
+		<small>Posted by <%=comment.user.name%> on <%=comment.created_at.to_s(:long)%> 
+		<%-if is_admin?%>
+			&nbsp;&nbsp;&nbsp; <a href="">Edit</a>&nbsp;&nbsp;&nbsp; <a href="">Delete</a></small>
+		<%end-%>
 	</div>
 </div>

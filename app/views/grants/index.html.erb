@@ -6,10 +6,15 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('tr').click(function(el) {
-			window.location = "/grants/" + $(this).attr("grantId");
+			if($(this).attr("grantId")){
+				window.location = "/grants/" + $(this).attr("grantId");
+			}
 		});
 	});
 </script>
+<%if @grants.empty?%>
+<div class='notice'>You currently don't have any grant applications. To get started, press the 'Create an Application' button below.</div>
+<%end%>
 <%if is_admin?%>
 	<%=link_to("<div class='add'>Create an application for a student</div>".html_safe, new_grant_path)%>
 <%else%>
@@ -17,34 +22,37 @@
 <%end%>
 <div style="clear:both"></div>
 <br/>
-<table style="width:900px">
-	<tr>
-		<td style="padding-right:100px">
-			Conference Name
-		</td>
-		<td>
-			Tracking #
-		</td>
-		<%-if is_admin?%>
-		<td>Student #</td>
-		<%end-%>
-		<td style="padding-right:0px">
-			Created on
-		</td>
-		<td>
-			Status
-		</td>
-	</tr>
-	<%-@grants.each_with_index do |grant,i| %>
-		<tr class='<%="application #{i%2==0 ? 'even':'odd'}"%>' grantId = <%=grant.id%>>
-			<td><%=grant.conference_name%> &nbsp;<%=link_to "<small style='color:#2477b7;font-style:italic'>view</small>".html_safe, grant_path(grant)%></td>
-			<td>5555</td>
+<%if @grants.present?%>
+	<table style="width:900px">
+		<tr>
+			<td style="padding-right:100px">
+				Conference Name
+			</td>
+			<td>
+				Tracking #
+			</td>
 			<%-if is_admin?%>
-				<td><%=grant.user.student_number%></td>
+			<td>Student #</td>
 			<%end-%>
-			<td><%=grant.created_at.to_date.to_s(:long)%></td>
-			<td><%=grant.status%></td>
+			<td style="padding-right:0px">
+				Created on
+			</td>
+			<td>
+				Status
+			</td>
 		</tr>
-	<%end-%>
-</table>
+	
+		<%-@grants.each_with_index do |grant,i| %>
+			<tr class='<%="application #{i%2==0 ? 'even':'odd'}"%>' grantId = <%=grant.id%>>
+				<td><%=grant.conference_name%> &nbsp;<%=link_to "<small style='color:#2477b7;font-style:italic'>view</small>".html_safe, grant_path(grant)%></td>
+				<td><%=(grant.tracking_number).to_s%></td>
+				<%-if is_admin?%>
+					<td><%=grant.user.student_number%></td>
+				<%end-%>
+				<td><%=grant.created_at.to_date.to_s(:long)%></td>
+				<td><%=grant.status%></td>
+			</tr>
+		<%end-%>
+	</table>
+<%end%>
 

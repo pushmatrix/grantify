@@ -6,12 +6,16 @@ Grantify::Application.routes.draw do
 
   devise_for :users
   
+  match 'grants/search'=>"grants#search"
+  match 'grants/distribute_funds'=>"grants#distribute_funds"
+  match 'grants/reports'=>"grants#reports"
+  
   resources :users
   resources :grants do
     resources :comments, :only => :create
   end
   resources :comments
-
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

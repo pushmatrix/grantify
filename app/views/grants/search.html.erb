@@ -1,0 +1,7 @@
+<%=content_for :header, "Find an Application"%>
+<small>Enter the Tracking number of the application.</small>
+<br/><br/>
+<%=form_tag do |f|%>
+	<%=text_field_tag 'tracking_number'%>
+	<%=submit_tag 'Search'%>
+<%end%>

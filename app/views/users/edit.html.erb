@@ -1,5 +1,7 @@
 <%=content_for :header, 'Personal Information'%>
+<%-if !is_admin?%>
 <div class='notice'>Welcome to Grantify. In order to use the application, we require that all of the following information be filled. </div>
+<%end-%>
 <div class='error'>
 <%= error_messages_for(current_user, :header_message => "Ooops...some fields were missing.",:message => "")%>
 </div>

@@ -1,5 +1,15 @@
 <%=content_for :header, @grant.conference_name%>
+<%= content_for :javascript, javascript_include_tag("facebox.js")%>
+<script language="javascript" type="text/javascript">  
+jQuery(document).ready(function($) {
+	$('a[rel*=facebox]').facebox();
+});
+</script>
 <%= link_to 'Edit this application', edit_grant_path(@grant) %>
+<%if is_admin?%>
+	&nbsp;<%= link_to "Accept", {:action => :accept} %>
+	&nbsp;<%= link_to "Reject" %>
+<%end%>
 <br />
 <div class='details' style='float:left;width:550px;'>
 		<h2>Conference Details</h2>
@@ -25,12 +35,11 @@
 			<label>Other assistance:</label><%=@grant.other_assis%>
 			<div style="clear:both"></div><br/>
 	<br/>
-	
-	<%= link_to "Accept", {:action => :accept} %>
 </div>
+<br/>
+<span style='float:right'>Tracking #: <%=@grant.tracking_number%></span>
 <div class='minimap'><a href="/images/map.jpg" rel='facebox'><%=image_tag('minimap.jpg')%></a></div>
 <div style="clear:both"></div>
-
 <h2>Comments</h2>
 <%-if is_admin?%>
 	<% form_for [@grant, @comment] do |f| %>

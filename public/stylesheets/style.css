@@ -67,7 +67,7 @@ a:hover{
   font-weight: 30px;
   height: 50px;
   padding-top: 8px;
-  padding-right: 50px;
+  padding-right: 100px;
 
 }
 #banner{
@@ -105,7 +105,7 @@ a:hover{
 #main_container{
   background: white;
   width: 960px;
-  min-height: 400px;
+  min-height: 100px;
   margin: 0px auto;
   margin-top: -30px;
   padding-top: 20px;
@@ -147,6 +147,7 @@ form submit{
   background:#fdffe2;
   border: 1px solid #fcef9f;
   padding: 15px;
+  margin-bottom:20px;
 }
 
 .alert{
@@ -207,14 +208,23 @@ tr.application:hover{
   background:#97d2fc;
 }
 
+.login label{
+  font-size:25px;
+}
+
+.login form input{
+  margin-bottom:0px;
+}
 .new label{
   width: 200px;
   float:left;
   text-align: left;
   display: block;
   font-size: 15px;
+  color: #3f3f3f;
 }
 .details label{
+  color:#3f3f3f;
   width: 200px;
   float:left;
   text-align: left;
