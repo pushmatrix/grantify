@@ -1,5 +1,5 @@
 class GrantsController < ApplicationController
-  before_filter :fetch_grant, :only => [:show, :edit, :update]
+  before_filter :fetch_grant, :only => [:show, :edit, :update, :accept, :reject]
   before_filter :authenticate_user!
   def index
     if !is_admin?
@@ -45,4 +45,9 @@ class GrantsController < ApplicationController
     @grant = Grant.find(params[:id])
   end
 
+  def accept
+    @grant.status = 4
+    @grant.save
+    redirect_to grants_path
+  end
 end

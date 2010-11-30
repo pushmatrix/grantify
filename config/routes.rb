@@ -1,6 +1,8 @@
 Grantify::Application.routes.draw do
 
   get "users/edit"
+  
+  get "grants/accept"
 
   devise_for :users
   
