@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   attr_accessible :student_number, :email, :password, :password_confirmation, :remember_me
   
   has_many :grants
+  has_many :comments
   
   validates :name,  :presence=>true, :on => :update
   validates :phone,  :presence=>true, :on => :update

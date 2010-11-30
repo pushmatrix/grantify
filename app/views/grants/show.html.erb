@@ -1,13 +1,7 @@
 <%=content_for :header, @grant.conference_name%>
 <%= link_to 'Edit this application', edit_grant_path(@grant) %>
-
-<% form_for [@grant, @comment] do |f| %>
-	<%= f.label :message, 'Comment' %><br /><%= f.text_area :message %><br />
-	<%= f.submit 'Submit' %>
-<% end %>
-<%= @comments.last.message unless @comments.empty? %>
-
-<div class='details' style="width:700px">
+<br />
+<div class='details' style='float:left;width:550px;'>
 		<h2>Conference Details</h2>
 			<label>Conference name:</label><%=@grant.conference_name%>
 			<div style="clear:both"></div><br/>
@@ -32,4 +26,15 @@
 			<div style="clear:both"></div><br/>
 	<br/>
 </div>
+<div class='minimap'><a href="/images/map.jpg" rel='facebox'><%=image_tag('minimap.jpg')%></a></div>
+<div style="clear:both"></div>
+
+<h2>Comments</h2>
+<%-if is_admin?%>
+	<% form_for [@grant, @comment] do |f| %>
+		<%= f.label :message, 'Add a new comment' %><br /><%= f.text_area :message %><br />
+		<%= f.submit 'Post' %>
+	<% end-%>
+<%end-%>
+<%= render :partial => 'comments/comment', :collection => @comments, :locals => {:grant=>@grant}%>
 

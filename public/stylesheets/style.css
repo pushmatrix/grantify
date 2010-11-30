@@ -246,3 +246,16 @@ small{
 .minimap:hover{
   opacity:0.7;
 }
+
+textarea{
+  height:70px;
+  width: 100%;
+}
+
+.comment{
+  background:lightgrey;
+  padding: 10px;
+  margin-bottom: 7px;
+  border: darkgrey 1px solid;
+}
+

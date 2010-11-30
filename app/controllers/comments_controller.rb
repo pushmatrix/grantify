@@ -8,6 +8,7 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.create(params[:comment])
     @comment.grant_id = params[:grant_id]
+    @comment.user_id = current_user.id
     flash[:notice] = 'Comment posted.'
     @comment.save
     redirect_to grant_path(params[:grant_id])

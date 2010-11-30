@@ -14,4 +14,5 @@ Grant.create(:user=>testUser1,:conference_name=>"CUSEC 2011",:status=>1)
 
 testAdmini = User.create({:student_number=>"admin",:password=>"admin"})
 testAdmini.admin = true
+testAdmini.name = "Razib Iqbal"
 testAdmini.save(:validate=>false)

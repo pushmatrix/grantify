@@ -1,4 +1,8 @@
-<%=content_for :header, "Your Applications"%>
+<%if is_admin?%>
+	<%=content_for :header, "All Applications"%>
+<%else%>
+	<%=content_for :header, "Your Applications"%>
+<%end%>
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('tr').click(function(el) {
@@ -6,13 +10,20 @@
 		});
 	});
 </script>
-<%=link_to("<div class='add'>Create an application</div>".html_safe, new_grant_path)%>
+<%if is_admin?%>
+	<%=link_to("<div class='add'>Create an application for a student</div>".html_safe, new_grant_path)%>
+<%else%>
+	<%=link_to("<div class='add'>Create an application</div>".html_safe, new_grant_path)%>
+<%end%>
 <div style="clear:both"></div>
 <br/>
 <table style="width:900px">
 	<tr>
 		<td style="padding-right:100px">
 			Conference Name
+		</td>
+		<td>
+			Tracking #
 		</td>
 		<%-if is_admin?%>
 		<td>Student #</td>
@@ -27,6 +38,7 @@
 	<%-@grants.each_with_index do |grant,i| %>
 		<tr class='<%="application #{i%2==0 ? 'even':'odd'}"%>' grantId = <%=grant.id%>>
 			<td><%=grant.conference_name%> &nbsp;<%=link_to "<small style='color:#2477b7;font-style:italic'>view</small>".html_safe, grant_path(grant)%></td>
+			<td>5555</td>
 			<%-if is_admin?%>
 				<td><%=grant.user.student_number%></td>
 			<%end-%>
