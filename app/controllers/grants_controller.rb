@@ -3,7 +3,7 @@ class GrantsController < ApplicationController
   before_filter :fetch_grant, :only => [:show, :edit, :update, :accept, :reject,:submit]
   before_filter :fetch_owner, :only => [:show, :edit, :update, :accept, :reject]
   before_filter :ensure_ownership, :only => [:show, :edit, :update] 
-  before_filter :ensure_admin, :only=> [:search,:distribute_funds,:reports,:accept,:reject]
+  before_filter :ensure_admin, :only=> [:search,:distribute_funds,:reports,:accept,:reject,:distribute]
   def index
     if !is_admin?
       @grants = current_user.grants.order("status DESC").order('created_at DESC')
@@ -31,6 +31,7 @@ class GrantsController < ApplicationController
   end
   
   def distribute_funds
+    @grants = Grant.where(:status=>Grant::STATUS[:TEMPORARY]).order('created_at DESC')
   end
   
   def reports

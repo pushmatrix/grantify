@@ -1,1 +1,37 @@
+<%=content_for :header, 'Distribute Funds'%>
 <%= link_to "Distribute", {:action => :distribute, :controller => :grants} %>
+<br/>
+<br/>
+<%if @grants.present?%>
+	<table style="width:900px">
+		<tr>
+			<td style="padding-right:100px">
+				Conference Name
+			</td>
+			<td>
+				Tracking #
+			</td>
+			<%-if is_admin?%>
+			<td>Student #</td>
+			<%end-%>
+			<td style="padding-right:0px">
+				Created on
+			</td>
+			<td>
+				Status
+			</td>
+		</tr>
+	
+		<%-@grants.each_with_index do |grant,i| %>
+			<tr class='<%="application #{i%2==0 ? 'even':'odd'}"%>' grantId = <%=grant.id%>>
+				<td><%=grant.conference_name%> &nbsp;<%=link_to "<small style='color:#2477b7;font-style:italic'>view</small>".html_safe, grant_path(grant)%></td>
+				<td><%=(grant.tracking_number).to_s%></td>
+				<%-if is_admin?%>
+					<td><%=grant.user.student_number%></td>
+				<%end-%>
+				<td><%=grant.created_at.to_date.to_s(:long)%></td>
+				<td><%=grant.get_status_name%></td>
+			</tr>
+		<%end-%>
+	</table>
+<%end%>
