@@ -61,7 +61,12 @@ jQuery(document).ready(function($) {
 	<br/>
 </div>
 <br/>
-<span style='float:right'>Tracking #: <%=@grant.tracking_number%></span>
+<span style='float:right'>
+	Tracking #: <%=@grant.tracking_number%>
+	<%-if !@grant.funding.nil?%>
+		<br />Grant amount: $<%= @grant.funding %>
+	<%end-%>
+</span>
 <div class='minimap'><a href="/images/map.jpg" rel='facebox'><%=image_tag('minimap.jpg')%></a></div>
 <div style="clear:both"></div>
 <h2>Comments</h2>

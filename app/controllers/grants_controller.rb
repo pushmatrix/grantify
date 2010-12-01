@@ -140,4 +140,15 @@ class GrantsController < ApplicationController
       redirect_to grants_path
     end
   end
+  
+  def distribute
+    @grants = Grant.all(:conditions => {:status => 2})
+    @grants.each { |grant|
+      grant.status = Grant::STATUS[:APPROVED]
+      grant.funding = 300 + rand(500)
+      grant.save
+    }
+    flash[:notice] = 'Funds have been distributed.'
+    redirect_to grants_path
+  end
 end
