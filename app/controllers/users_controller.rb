@@ -3,11 +3,12 @@ class UsersController < ApplicationController
   end
 
   def update
+    
     current_user.name = params[:user][:name]
     current_user.phone = params[:user][:phone]
     current_user.department = params[:user][:department]
     current_user.email = params[:user][:email]
-    current_user.degree = params[:user][:degree]
+    current_user.degree = params[:degree]
     current_user.year = params[:user][:year]
     if current_user.save
       redirect_to grants_path

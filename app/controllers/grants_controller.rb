@@ -64,7 +64,7 @@ class GrantsController < ApplicationController
             raise Exception
           end
         rescue Exception => e
-          flash[:alert] = "Not student was found with number #{params[:student_number]}"
+          flash[:alert] = "No student was found with number #{params[:student_number]}"
           render :new
           return
         end
@@ -125,7 +125,7 @@ class GrantsController < ApplicationController
   end
 
   def accept
-    flash[:notice] = 'The grant was accepted!'
+    flash[:notice] = 'The grant application was accepted!'
     if @grant.status == Grant::STATUS['IN PROCESS']
       @grant.status =  Grant::STATUS[:TEMPORARY]
       @grant.save
@@ -134,7 +134,7 @@ class GrantsController < ApplicationController
   end
   
   def reject
-    flash[:notice] = 'The grant was rejected!'
+    flash[:notice] = 'The grant application was rejected!'
     if @grant.status == Grant::STATUS['IN PROCESS']
       @grant.status =  Grant::STATUS[:REJECTED]
       @grant.save

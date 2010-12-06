@@ -13,7 +13,7 @@
 		<%= f.label :email %> <%= f.text_field :email %><br />
 		<%= f.label :phone %><%= f.text_field :phone %><br />
 		<%= f.label :department %> <%= f.text_field :department %><br />
-		<%= f.label :degree %> <%= f.text_field :degree %><br />
+		<%= f.label :degree %> <%= select_tag :degree, options_for_select(User::DEGREE_TYPES) %><br/>
 		<%= f.label :year %> <%= f.text_field :year %><br />
 		<%= f.submit 'Submit!' %>
 	<% end %>

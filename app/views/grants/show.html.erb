@@ -36,6 +36,18 @@ jQuery(document).ready(function($) {
 <br />
 <div style="clear:both"></div>
 <div class='details' style='float:left;width:550px;'>
+	<h2>Student Information</h2>
+	<label>Student name:</label><%=@grant.user.name%>
+	<div style="clear:both"></div><br/>
+	<label>Email:</label><%=@grant.user.email%>
+	<div style="clear:both"></div><br/>
+	<label>Phone:</label><%=@grant.user.phone%>
+	<div style="clear:both"></div><br/>
+	<label>Department:</label><%=@grant.user.department%>
+	<div style="clear:both"></div><br/>
+	<label>Degree:</label><%=@grant.user.get_degree_name%>
+	<div style="clear:both"></div><br/>
+	<label>Year:</label><%=@grant.user.year%>
 	<h2>Conference Details</h2>
 	<label>Conference name:</label><%=@grant.conference_name%>
 	<div style="clear:both"></div><br/>
