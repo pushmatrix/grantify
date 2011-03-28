@@ -41,7 +41,7 @@ class GrantsController < ApplicationController
     if @grant.status == Grant::STATUS[:EDITING]
       @grant.status = Grant::STATUS['IN PROCESS']
       if @grant.save
-        flash[:notice] = "Your grant was successfully submitted."
+        flash[:success] = "Your grant was successfully submitted. A confirmation email has been sent to you."
         redirect_to grants_path
         return
       else
@@ -77,9 +77,9 @@ class GrantsController < ApplicationController
     if @grant.save(:validate=>false)
       
       if @grant.valid?
-        flash[:notice] = 'Your grant application is now complete. Please press the submit button when you are ready.'
+        flash[:success] = 'Your grant application is now complete. Please press the submit button when you are ready.'
       else
-        flash[:notice] = 'Application saved!'
+        flash[:success] = 'Application saved!'
       end
       redirect_to @grant
     else
@@ -106,9 +106,9 @@ class GrantsController < ApplicationController
     @grant.region = params[:region]
     @grant.save(:validate=>false)
     if @grant.valid?
-      flash[:notice] = 'Your grant application is now complete. Please press the submit button when you are ready.'
+      flash[:success] = 'Your grant application is now complete. Please press the submit button when you are ready.'
     else
-      flash[:notice] = 'Application saved!'
+      flash[:success] = 'Application saved!'
     end
     redirect_to grant_path(params[:id])
   end
@@ -125,7 +125,7 @@ class GrantsController < ApplicationController
   end
 
   def accept
-    flash[:notice] = 'The grant application was accepted!'
+    flash[:success] = 'The grant application was accepted!'
     if @grant.status == Grant::STATUS['IN PROCESS']
       @grant.status =  Grant::STATUS[:TEMPORARY]
       @grant.save
@@ -134,7 +134,7 @@ class GrantsController < ApplicationController
   end
   
   def reject
-    flash[:notice] = 'The grant application was rejected!'
+    flash[:success] = 'The grant application was rejected!'
     if @grant.status == Grant::STATUS['IN PROCESS']
       @grant.status =  Grant::STATUS[:REJECTED]
       @grant.save
@@ -149,7 +149,7 @@ class GrantsController < ApplicationController
       grant.funding = 300 + rand(500)
       grant.save
     }
-    flash[:notice] = 'Funds have been distributed.'
+    flash[:success] = 'Funds have been distributed.'
     redirect_to grants_path
   end
 end

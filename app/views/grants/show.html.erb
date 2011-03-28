@@ -7,7 +7,7 @@ jQuery(document).ready(function($) {
 </script>
 
 <%if @grant.status == Grant::STATUS[:APPROVED]%>
-    <div class='notice'> This grant application has been awarded $<%=@grant.funding%>.</div>
+    <div class='success'> This grant application has been awarded $<%=@grant.funding%>.</div>
 <%end%>
 <%if @grant.status == Grant::STATUS[:REJECTED]%>
     <div class='alert'> This grant application has been rejected</div>
@@ -16,13 +16,14 @@ jQuery(document).ready(function($) {
     <div class='notice'> This grant application is pending approval.</div>
 <%end%>
 <%if @grant.status == Grant::STATUS[:TEMPORARY]%>
-    <div class='notice'> This grant application has been approved, and is now waiting for fund distribution.</div>
+    <div class='success'> This grant application has been approved, and is now waiting for fund distribution.</div>
 <%end%>
 <%if @grant.status == Grant::STATUS[:EDITING]%>
 <%if !@grant.valid?%>
     <div class='notice'>Before you can submit this application, you will need to edit and fill in all of the forms.</div>
 <%end%>
     <%if @grant.valid?%>
+      <div class='notice'>Your application is ready to be submitted. You can still edit it by pressing the edit button below. When you are ready to submit, please press the Submit button.</div>
         <%= button_to 'Submit this application', { :action => "submit", :id => @grant.id },
                     :confirm => "Are you sure you want to submit?", :method => :post,:style=>'float:left' %>
     &nbsp;&nbsp;

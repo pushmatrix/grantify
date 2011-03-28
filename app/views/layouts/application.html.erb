@@ -49,6 +49,11 @@
 					<%= flash[:alert] %>
 				</div>
 			<% end-%>
+			<%- if flash[:success] %>
+				<div class="success">
+					<%= flash[:success] %>
+				</div>
+			<% end-%>
 			<%- if flash[:notice] %>
 				<div class="notice">
 					<%= flash[:notice] %>

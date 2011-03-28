@@ -150,6 +150,14 @@ form submit{
   margin-bottom:20px;
 }
 
+.success{
+  color: #63964E;
+  background:#ADFFC0;
+  border: 1px solid #7ADE52;
+  padding: 15px;
+  margin-bottom:20px;
+}
+
 .alert{
   color: #F00;
   background:#ffc9c9;
